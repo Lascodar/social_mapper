@@ -30,16 +30,16 @@ assert sys.version_info >= (3,), "Only Python 3 is currently supported."
 
 global linkedin_username
 global linkedin_password
-linkedin_username = ""
-linkedin_password = ""
+linkedin_username = "jdekerviel@gmail.com"
+linkedin_password = "Blink182%"
 global facebook_username
 global facebook_password
-facebook_username = ""
-facebook_password = ""
+facebook_username = "jdekerviel@gmail.com"
+facebook_password = "182182"
 global twitter_username
 global twitter_password
-twitter_username = ""
-twitter_password = ""
+twitter_username = "jdekerviel@gmail.com"
+twitter_password = "Blink182"
 global instagram_username
 global instagram_password
 instagram_username = ""
@@ -926,20 +926,20 @@ peoplelist = []
 
 # Fill people list from document with just name + image link
 if args.format == "csv":
-    exit=False
-    file = open(args.input, 'rb')
-    data = file.read()
-    file.close()
+    exit = False
+    with open(args.input, 'rb') as f:
+        data = f.read()
     try:
         os.remove('temp.csv')
     except OSError:
         pass
-    tempcsv = open('temp.csv', 'w')
-    tempcsv.write(data.replace('\x00',''))
-    tempcsv.close()
+
+    with open('temp.csv', 'wb') as tempcsv:
+        tempcsv.write(data.decode().replace('\x00', '').encode())
+
     if not os.path.exists('temp-targets'):
         os.makedirs('temp-targets')
-    filereader = csv.reader(open('temp.csv', 'rb'), delimiter=",")
+    filereader = csv.reader(open('temp.csv', 'r'), delimiter=",")
     for full_name, person_image in filereader:
         try:
             full_name = encoding.smart_str(full_name, encoding='ascii', errors='ignore')
