@@ -3,3 +3,5 @@ temp.csv
 SM-Results/
 .idea
 __pycache__
+.env
+

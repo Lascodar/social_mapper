@@ -25,48 +25,53 @@ from bs4 import BeautifulSoup
 from django.utils import encoding
 import traceback
 import math
+from dotenv import load_dotenv
 
 assert sys.version_info >= (3,), "Only Python 3 is currently supported."
 
+load_dotenv()
+
 global linkedin_username
 global linkedin_password
-linkedin_username = "jdekerviel@gmail.com"
-linkedin_password = "Blink182%"
+linkedin_username = os.getenv('LINKEDIN_USERNAME', '')
+linkedin_password = os.getenv('LINKEDIN_PASSWORD', '')
 global facebook_username
 global facebook_password
-facebook_username = "jdekerviel@gmail.com"
-facebook_password = "182182"
+facebook_username = os.getenv('FACEBOOK_USERNAME', '')
+facebook_password = os.getenv('FACEBOOK_PASSWORD', '')
 global twitter_username
 global twitter_password
-twitter_username = "jdekerviel@gmail.com"
-twitter_password = "Blink182"
+twitter_username = os.getenv('TWITTER_USERNAME', '')
+twitter_password = os.getenv('TWITTER_PASSWORD', '')
 global instagram_username
 global instagram_password
-instagram_username = ""
-instagram_password = ""
+instagram_username = os.getenv('INSTAGRAM_USERNAME', '')
+instagram_password = os.getenv('INSTAGRAM_PASSWORD', '')
 global google_username
 global google_password
-google_username = ""
-google_password = ""
+google_username = os.getenv('GOOGLE_USERNAME', '')
+google_password = os.getenv('GOOGLE_PASSWORD', '')
 global vk_username
 global vk_password
-vk_username = "" # Can be mobile or email
-vk_password = ""
+vk_username = os.getenv('VK_USERNAME', '')  # Can be mobile or email
+vk_password = os.getenv('VK_PASSWORD', '')
 global weibo_username
 global weibo_password
-weibo_username = "" # Can be mobile
-weibo_password = ""
+weibo_username = os.getenv('WEIBO_USERNAME', '')  # Can be mobile
+weibo_password = os.getenv('WEIBO_PASSWORD', '')
 global douban_username
 global douban_password
-douban_username = ""
-douban_password = ""
+douban_username = os.getenv('DOUBAN_USERNAME', '')
+douban_password = os.getenv('DOUBAN_PASSWORD', '')
 global pinterest_username
 global pinterest_password
-pinterest_username = ""
-pinterest_password = ""
+pinterest_username = os.getenv('PINTEREST_USERNAME', '')
+pinterest_password = os.getenv('PINTEREST_PASSWORD', '')
 
 
 startTime = datetime.now()
+
+
 
 class Person(object):
     first_name = ""
