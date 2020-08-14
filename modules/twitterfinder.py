@@ -8,6 +8,7 @@ import os
 from bs4 import BeautifulSoup
 from pyvirtualdisplay import Display
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
 
 class Twitterfinder(object):
@@ -54,18 +55,18 @@ class Twitterfinder(object):
                 print(
                     "Twitter Login Page password field seems to have changed, please make an issue on: https://github.com/Greenwolf/social_mapper")
                 sys.exit()
-            twPassword.send_keys(password)
+            twPassword.send_keys(password, Keys.Enter)
             sleep(2)
 
-            try:
-                twLoginButton = self.driver.find_element_by_xpath(
-                    "/html/body/div/div/div/div/main/div/div/form/div/div[3]/div")
-            except:
-                print(
-                    "Twitter Login Page login button name seems to have changed, please make an issue on: https://github.com/Greenwolf/social_mapper")
-                traceback.print_exc()
-                sys.exit()
-            twLoginButton.click()
+            #try:
+            #    twLoginButton = self.driver.find_element_by_xpath(
+            #        "/html/body/div/div/div/div/main/div/div/form/div/div[3]/div")
+            #except:
+            #    print(
+            #        "Twitter Login Page login button name seems to have changed, please make an issue on: https://github.com/Greenwolf/social_mapper")
+            #    traceback.print_exc()
+            #    sys.exit()
+            #twLoginButton.click()
             sleep(5)
 
             if (self.driver.title.encode('ascii', 'replace').startswith(bytes("Login on", 'utf-8'))):
