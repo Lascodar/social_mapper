@@ -63,9 +63,9 @@ class Pinterestfinder(object):
             sleep(5)
 
             if (self.driver.title.encode('ascii', 'replace').startswith(bytes("Pinterest", 'utf-8'))):
-                print("[-] Pinterest Login Failed [-]\n")
+                print("[-] Pinterest Login SUccess [-]\n")
             else:
-                print("[+] Pinterest Login Success [+]\n")
+                print("[+] Pinterest Login Failed [+]\n")
         else:
             print(
                 "Pinterest Login Page title field seems to have changed, please make an issue on: https://github.com/Greenwolf/social_mapper")
